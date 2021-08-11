@@ -1,0 +1,87 @@
+
+<app-slider
+
+[Nombre]="'formulario'"
+[size]="'small'"
+></app-slider>
+
+<div class="center">
+<section id ="content">
+
+
+
+<h1 class="subheader">Formulario</h1>
+<!--
+<h2 class="subheader">datos reactivos</h2>
+<ul>
+	
+	<li>
+		{{user.nombre}}
+	</li>
+
+	<li>
+		{{user.apellidos}}
+	</li>
+
+
+	<li>
+		{{user.bio}}
+	</li>
+
+
+	<li>
+		{{user.genero}}
+	</li>
+</ul>
+-->
+<br>
+<form class="min-form" #userForm="ngForm"  (ngSubmit)="onSubmit()">
+<div class="form-group">
+
+<label for="nombre">Nombre:</label>
+<input type="text" name="nombre" #nombre="ngModel" [(ngModel)]="user.nombre" required=""> 
+<small *ngIf="!nombre.valid && nombre.touched">
+	El nombre no es valido
+</small>
+</div>
+
+<div class="form-group">
+<label for="apellidos">Apellidos:</label>
+<input type="text" name="apellidos"  #apellidos="ngModel" [(ngModel)]="user.apellidos" required="">
+<small *ngIf="!apellidos.valid && apellidos.touched">
+	los apellidos  no es valido
+</small>
+</div>
+
+<div class="form-group">
+<label for="biografia">Biografia:</label>
+<textarea name="bio"  #bio="ngModel" [(ngModel)]="user.bio" required=""></textarea>
+<small *ngIf="!bio.valid && bio.touched">
+	la biografia  no es valido
+</small>
+</div>
+
+<div class="form-group radiobuttoms">
+    <input type="radio" name="hombre" #genero="ngModel" value="hombre"  [(ngModel)]="user.genero" />Hombre
+    <input type="radio" name="mujer" #genero="ngModel" value="mujer"  [(ngModel)]="user.genero" />Mujer
+    <input type="radio" name="otro" value="otro" #genero="ngModel"  [(ngModel)]="user.genero" />Otro
+  <small *ngIf="!genero.valid && genero.touched">
+  	genero no valido
+  </small>
+
+</div>  
+<div class="clearfix"></div>
+<input type="submit"  value="enviar" [disabled]="userForm.invalid" class="btn btn-success"/>
+
+</form>
+
+<!--<h2 class="subheader">Eventos</h2>
+<button (click)="hasdadoClick()">Dale click!!</button>
+
+<input type="text" [ngModel]="campo" (blur)="hasdadoClick()"/>
+
+<input type="text" [ngModel]="enter" (keyup.enter)="DisteEnter()"/>-->
+</section>	
+<app-sidebar></app-sidebar>
+</div>
+
